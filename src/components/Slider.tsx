@@ -1,14 +1,47 @@
 import styled from "styled-components";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useState } from "react";
+import { sliderItems } from "../data";
 
 export const Slider = () => {
+        const [slideIndex, setSlideIndex] = useState(0)
+        const handleClick = (direction: string): void => {
+             if(direction === "left"){
+                setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
+             }   else {
+                setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0)
+             }
+        }
   return (
     <Container>
-      <Arrow dir="left">
+      <Arrow dir="left" onClick={ () => handleClick("left")}>
         <ArrowBackIcon />
       </Arrow>
-      <Wrapper>
+      <Wrapper slideIndex = {slideIndex}>
+        {sliderItems.map(item => (
+
+       
+        <Slide >
+          <ImgContainer>
+            <Image>
+              <img
+                className="img"
+                src={item.img}
+                alt=""
+              />
+            </Image>
+          </ImgContainer>
+
+          <InfoContainer>
+            <Title>{item.title}</Title>
+            <Desc>
+             {item.desc}
+            </Desc>
+            <Button>SHOP NOW</Button>
+          </InfoContainer>
+        </Slide>
+         ))}
         <Slide>
           <ImgContainer>
             <Image>
@@ -21,7 +54,7 @@ export const Slider = () => {
           </ImgContainer>
 
           <InfoContainer>
-            <Title>SUMMER SALE</Title>
+            <Title>WINTER SALE</Title>
             <Desc>
               {" "}
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
@@ -31,7 +64,7 @@ export const Slider = () => {
           </InfoContainer>
         </Slide>
       </Wrapper>
-      <Arrow dir="right">
+      <Arrow dir="right" onClick={() => handleClick("right")}>
         <ArrowForwardIcon />
       </Arrow>
     </Container>
@@ -42,12 +75,14 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   position: relative;
+  overflow: hidden;
+
 `;
 
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #fff7f7;
+  background-color: #fff3f3;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -60,9 +95,13 @@ const Arrow = styled.div`
   right: ${(props) => props.dir === "right" && "10px"};
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 `;
 const Wrapper = styled.div`
   height: 100%;
+  display: flex;
+  transform: translateX(${props => props.slideIndex * -100}vw);
+  transition: all 1s ease;
 `;
 
 const Slide = styled.div`
@@ -82,9 +121,21 @@ const InfoContainer = styled.div`
 const Title = styled.h1`
   font-size: 70px;
 `;
-const Desc = styled.p``;
-const Button = styled.button``;
+const Desc = styled.p`
+  margin: 50px 0px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+`;
+const Button = styled.button`
+padding: 10px;
+font-size: 20px;
+background-color: transparent;
+cursor: pointer;
+`;
 
 const Image = styled.image`
   height: 80%;
+  padding-left: 100px;
+  
 `;
