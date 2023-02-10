@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
-import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 const Navbar = () => {
   return (
     <Container>
@@ -10,21 +10,21 @@ const Navbar = () => {
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input/>
-            <SearchIcon />
+            <Input />
+            <SearchIcon style = {{color: "gray", fontSize:20}}/>
           </SearchContainer>
         </Left>
         <Center>
-            <Logo>BVCR</Logo>
+          <Logo>BVCR</Logo>
         </Center>
         <Right>
-            <MenuItem>REGISTER</MenuItem>
-            <MenuItem>SIGN IN</MenuItem>
-            <MenuItem>
+          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>
             <Badge badgeContent={4} color="primary">
-      <MailIcon color="action" />
-    </Badge>
-            </MenuItem>
+              <ShoppingCartOutlinedIcon/>
+            </Badge>
+          </MenuItem>
         </Right>
       </Wrapper>
     </Container>
@@ -34,8 +34,9 @@ const Navbar = () => {
 export default Navbar;
 
 const Input = styled.input`
-border: none;
-`
+  border: none;
+  outline: none;
+`;
 
 const Container = styled.div`
   height: 60px;
@@ -68,20 +69,21 @@ const SearchContainer = styled.div`
 `;
 
 const Center = styled.div`
-text-align: center;
+  text-align: center;
   flex: 1;
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end ;
+  align-items: center;
 `;
 const Logo = styled.h1`
-font-weight: bold;
-`
+  font-weight: bold;
+`;
 
 const MenuItem = styled.div`
-font-size: 14px;
-cursor: pointer;
-`
-    
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+`;
