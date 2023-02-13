@@ -5,43 +5,43 @@ import { useState } from "react";
 import { sliderItems } from "../data";
 
 export const Slider = () => {
-        const [slideIndex, setSlideIndex] = useState(0)
-        const handleClick = (direction: string): void => {
-             if(direction === "left"){
-                setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
-             }   else {
-                setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0)
-             }
-        }
+  const [slideIndex, setSlideIndex] = useState(0)
+  const handleClick = (direction: string): void => { 
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+    }
+  }
   return (
     <Container>
-      <Arrow dir="left" onClick={ () => handleClick("left")}>
+      <Arrow dir="left" onClick={() => handleClick("left")}>
         <ArrowBackIcon />
       </Arrow>
-      <Wrapper slideIndex = {slideIndex}>
-        {sliderItems.map(item => (
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item) => (
 
-       
-        <Slide >
-          <ImgContainer>
-            <Image>
-              <img
-                className="img"
-                src={item.img}
-                alt=""
-              />
-            </Image>
-          </ImgContainer>
 
-          <InfoContainer>
-            <Title>{item.title}</Title>
-            <Desc>
-             {item.desc}
-            </Desc>
-            <Button>SHOP NOW</Button>
-          </InfoContainer>
-        </Slide>
-         ))}
+          <Slide key={item.id} >
+            <ImgContainer>
+              <Image>
+                <img 
+                  className="img"
+                  src={item.img}
+                  alt=""
+                />
+              </Image>
+            </ImgContainer>
+
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Desc>
+                {item.desc}
+              </Desc>
+              <Button>SHOP NOW</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
         <Slide>
           <ImgContainer>
             <Image>
@@ -60,7 +60,7 @@ export const Slider = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
               magnam.
             </Desc>
-            <Button>SHOP NOW</Button>
+            <Button >SHOP NOW</Button>
           </InfoContainer>
         </Slide>
       </Wrapper>
@@ -132,7 +132,11 @@ padding: 10px;
 font-size: 20px;
 background-color: transparent;
 cursor: pointer;
-`;
+&:hover {
+  background-color: black;
+  color: white;
+}
+`
 
 const Image = styled.image`
   height: 80%;

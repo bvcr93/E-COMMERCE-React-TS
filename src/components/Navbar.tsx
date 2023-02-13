@@ -4,14 +4,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 const Navbar = () => {
+
+
   return (
     <Container>
-      <Wrapper>
+      <Wrapper >
         <Left>
           <Language>EN</Language>
           <SearchContainer>
             <Input />
-            <SearchIcon style = {{color: "gray", fontSize:20}}/>
+            <SearchIcon style={{ color: "gray", fontSize: 20 }} />
           </SearchContainer>
         </Left>
         <Center>
@@ -22,7 +24,7 @@ const Navbar = () => {
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlinedIcon/>
+              <ShoppingCartOutlinedIcon />
             </Badge>
           </MenuItem>
         </Right>
@@ -36,6 +38,7 @@ export default Navbar;
 const Input = styled.input`
   border: none;
   outline: none;
+
 `;
 
 const Container = styled.div`
@@ -80,10 +83,11 @@ const Right = styled.div`
 `;
 const Logo = styled.h1`
   font-weight: bold;
+
 `;
 
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
 `;
