@@ -6,7 +6,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 export const Product = ({ item }: any) => {
   return (
     <Container>
-      <Circle />
+
       <Image src={item.img} />
       <Info>
         <Icon>
@@ -43,7 +43,7 @@ const Info = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 5px;
-  min-width: 280px;
+  min-width: 300px;
   height: 350px;
   display: flex;
   align-items: center;
@@ -60,13 +60,13 @@ const Image = styled.img`
   z-index: 2;
 `;
 
-const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
+// const Circle = styled.div`
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   background-color: white;
+//   position: absolute;
+// `;
 const Icon = styled.div`
   width: 40px;
   height: 40px;
