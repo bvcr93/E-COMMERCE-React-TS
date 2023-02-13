@@ -10,8 +10,8 @@ const Home = () => {
     
   return (
     <>
-      <Announcment />
-      <Navbar />
+     
+     
       <Slider />
       <Categories/>
       <Products/>

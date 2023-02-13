@@ -16,7 +16,7 @@ export const Newsletter = () => {
   );
 };
 const Container = styled.div`
-height: 60vw;
+height: 30vw;
 background-color: #fbecec;
 display: flex;
 justify-content: center;
