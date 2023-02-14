@@ -3,6 +3,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useState } from "react";
 import { sliderItems } from "../data";
+import { Link } from "react-router-dom";
 
 export const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0)
@@ -38,7 +39,9 @@ export const Slider = () => {
               <Desc>
                 {item.desc}
               </Desc>
+              <Link to ="/products">
               <Button>SHOP NOW</Button>
+              </Link>
             </InfoContainer>
           </Slide>
         ))}

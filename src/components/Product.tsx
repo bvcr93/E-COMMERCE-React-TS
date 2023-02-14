@@ -23,9 +23,7 @@ export const Product = ({ item }: any) => {
   );
 };
 const Info = styled.div`
-  // because of hover effect on container
-  // the info container should be  above the Container component
-  // so you can pass props to it later down below
+  
   width: 100%;
   height: 100%;
   position: absolute;
@@ -60,13 +58,7 @@ const Image = styled.img`
   z-index: 2;
 `;
 
-// const Circle = styled.div`
-//   width: 200px;
-//   height: 200px;
-//   border-radius: 50%;
-//   background-color: white;
-//   position: absolute;
-// `;
+
 const Icon = styled.div`
   width: 40px;
   height: 40px;
