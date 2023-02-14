@@ -53,7 +53,7 @@ export const Product = () => {
         </InfoContainer>
       </Wrapper>
       <Newsletter />
-      <Footer />
+   
     </Container>
   );
 };
