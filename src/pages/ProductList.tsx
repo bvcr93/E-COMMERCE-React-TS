@@ -1,7 +1,7 @@
 
 import styled from 'styled-components'
 
-import { Footer } from '../components/Footer'
+
 
 import { Newsletter } from '../components/Newsletter'
 import { Products } from '../components/Products'
@@ -9,7 +9,7 @@ import { Products } from '../components/Products'
 export const ProductList = () => {
   return (
     <Container>
-      <Title>Dresses</Title>
+      <Title>Most Popular</Title>
       <FilterContainer>
         <Filter>
        <FilterText> Filter Products: </FilterText>

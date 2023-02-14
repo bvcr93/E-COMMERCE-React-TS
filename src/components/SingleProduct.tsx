@@ -3,7 +3,10 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { useParams } from "react-router-dom";
 export const Product = ({ item }: any) => {
+
+
   return (
     <Container>
 
@@ -17,6 +20,7 @@ export const Product = ({ item }: any) => {
         </Icon>
         <Icon>
           <FavoriteBorderOutlinedIcon />
+          
         </Icon>
       </Info>
     </Container>
@@ -56,6 +60,7 @@ const Container = styled.div`
 const Image = styled.img`
   height: 75%;
   z-index: 2;
+ 
 `;
 
 

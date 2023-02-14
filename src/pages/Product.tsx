@@ -1,20 +1,20 @@
-import React from "react";
 import styled from "styled-components";
-import Announcment from "../components/Announcment";
-import { Footer } from "../components/Footer";
-import Navbar from "../components/Navbar";
-import { Newsletter } from "../components/Newsletter";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import { useParams } from "react-router-dom";
+import { popularProducts } from "../data";
+import { useState } from "react";
+
 export const Product = () => {
+  const [count, setCount] = useState(0);
+  const { id } = useParams();
+  const items = popularProducts.find((item) => item.id.toString() === id);
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" />
+          <Image src={items?.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
+          <Title>{items?.name}</Title>
           <Desc>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
@@ -22,7 +22,7 @@ export const Product = () => {
             tristique tortor pretium ut. Curabitur elit justo, consequat id
             condimentum ac, volutpat ornare.
           </Desc>
-          <Price>$20</Price>
+          <Price>${items?.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -43,31 +43,36 @@ export const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveIcon />
-              <Amount>1</Amount>
-
-              <AddIcon />
+              <ButtonClick onClick={() => setCount((prev) => prev - 1)}>
+                -
+              </ButtonClick>
+              <Amount>{count}</Amount>
+              <ButtonClick onClick={() => setCount((prev) => prev + 1)}>
+                +
+              </ButtonClick>
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-  
-   
     </Container>
   );
 };
 const Container = styled.div``;
 const Image = styled.img`
-  width: 100%;
   object-fit: cover;
-  height: 80vh;
+  height: 70vh;
   @media only screen and (max-width: 600px) {
-    height: 40vh;
+    height: 60vh;
   }
 `;
 const ImgContainer = styled.div`
   flex: 1;
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const Wrapper = styled.div`
   padding: 50px;
@@ -80,12 +85,20 @@ const Wrapper = styled.div`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
+  margin-top: 100px;
   @media only screen and (max-width: 600px) {
     padding: 10px;
   }
 `;
 const Desc = styled.p`
   margin: 20px 0px;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: lighter;
+  color: #656565;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 40px;
+  }
 `;
 const Price = styled.span`
   font-size: 40px;
@@ -161,4 +174,10 @@ const Button = styled.button`
   &:hover {
     background-color: aliceblue;
   }
+`;
+const ButtonClick = styled.button`
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
 `;

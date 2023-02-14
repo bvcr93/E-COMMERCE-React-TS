@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { popularProducts } from '../data'
-import { Product } from './Product'
+import { Product } from './SingleProduct'
 export const Products = () => {
   return (
     <Container>
       {popularProducts.map((item) => (
-<Link to ="/product">
+<Link to ={`/product/${item.id}`}>
         <Product item = {item} key= {item.id}/>
         </Link>
     ))}</Container>

@@ -18,11 +18,12 @@ function App() {
       <Routes>
         <Route element = {<SharedLayout/>}path="/">
         <Route  index element={<Home />} />
-        <Route path="/login" element={<Login />} />
+     
         <Route path="/cart" element={<Cart />} />
         <Route path="/products" element={<ProductList />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/product/:id" element={<Product />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

@@ -53,7 +53,10 @@ const Container = styled.div`
   height: 60px;
 margin-bottom: 20px;
 margin-top:10px;
-
+/* padding-left: 30px;
+padding-right: 30px; */
+max-width: 95%;
+margin: auto;
 `;
 
 const Wrapper = styled.div`
@@ -90,15 +93,16 @@ const SearchContainer = styled.div`
 const Center = styled.div`
   text-align: center;
   flex: 1;
+  @media only screen and (max-width: 600px) {
+display: none
+  }
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end ;
   align-items: center;
-  @media only screen and (max-width: 600px) {
-display: none
-  }
+
 `;
 const Logo = styled.h1`
   font-weight: bold;

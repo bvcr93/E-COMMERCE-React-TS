@@ -63,7 +63,7 @@ interface Product {
     {
       id:1,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
-    name: "item"
+    name: "White Shirt"
     },
  
     {
@@ -84,14 +84,14 @@ interface Product {
       id:6,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
       price: 10,
-    name: "item"
+    name: "Woman's Coat"
     },
  
     {
       id:8,
       img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
     price: 10,
-    name: "item"
+    name: "Woman's Coat"
   },
     {
       id:8,

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { Link } from "react-router-dom";
 export const Login = () => {
   return (
     <Container>
@@ -8,9 +8,11 @@ export const Login = () => {
       <Form>
         <Input placeholder="username" />
         <Input placeholder="password" />
-        <Button>LOGIN</Button>
-        <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-        <Link>CREATE A NEW ACCOUNT</Link>
+       <Link to = "/">
+        <Button >LOGIN</Button>
+        </Link>
+        <Links>DO NOT YOU REMEMBER THE PASSWORD?</Links>
+        <Links>CREATE A NEW ACCOUNT</Links>
       </Form>
     </Wrapper>
   </Container>
@@ -68,7 +70,7 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
+const Links = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
