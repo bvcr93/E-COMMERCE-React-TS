@@ -3,27 +3,35 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
 
 
   return (
-    <Container>
-      <Wrapper >
+    <Container className="flex flex-col">
+      <Wrapper  >
         <Left>
           <Language>EN</Language>
-          <SearchContainer>
-            <Input />
+          <SearchContainer >
+            <Input className="md:w-full w-[50px]  " placeholder="Search"/>
             <SearchIcon style={{ color: "gray", fontSize: 20 }} />
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>BVCR</Logo>
+          <Link to="/">
+          <Logo className="md:flex flex-col  md:w-full w-[40px] md:text-4xl text-xl ml-10  ">BVCR</Logo>
+          </Link>
         </Center>
-        <Right>
+        <Right className=" justify-center text-sm flex-2 ">
+          <Link to="/register">
           <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link to="/login">
           <MenuItem>SIGN IN</MenuItem>
+          </Link>
           <MenuItem>
-            <Badge badgeContent={4} color="primary">
+            <Badge  color="primary">
               <ShoppingCartOutlinedIcon />
             </Badge>
           </MenuItem>
@@ -43,6 +51,7 @@ const Input = styled.input`
 
 const Container = styled.div`
   height: 60px;
+
 `;
 
 const Wrapper = styled.div`
@@ -50,6 +59,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+
+  }
 `;
 
 const Left = styled.div`
@@ -80,9 +92,13 @@ const Right = styled.div`
   display: flex;
   justify-content: flex-end ;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+display: none
+  }
 `;
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
 
 `;
 
@@ -90,4 +106,6 @@ const MenuItem = styled.div`
   font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
+  color: black;
+  text-decoration: none;
 `;

@@ -30,7 +30,7 @@ export const sliderItems: Item[] = [
     },
   ];
 
-  type Category = "SHIRT STYLE" | "LOUNGEWEAR LOVE" | "LIGHT JACKETS"
+
 
   export const categories = [
     {
@@ -80,10 +80,10 @@ export const sliderItems: Item[] = [
     },
     {
       id:8,
-      img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+      img:"https://www.nicepng.com/png/detail/156-1562347_aesthetics-crop-top-transparent-background-crop-top-png.png",
     },
     {
       id:8,
-      img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+      img:"https://www.pngitem.com/pimgs/m/130-1302530_clothing-png-image-file-transparent-background-cloth-png.png",
     },
   ]

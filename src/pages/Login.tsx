@@ -35,6 +35,9 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
+  @media only screen and (max-width: 600px) {
+width: 75%;
+  }
 
 `;
 

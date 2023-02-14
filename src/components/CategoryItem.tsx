@@ -22,6 +22,9 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  @media only screen and (max-width: 600px) {
+height: 30vh;
+  }
 `;
 
 const Info = styled.div`

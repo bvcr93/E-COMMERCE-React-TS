@@ -22,11 +22,18 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+@media only screen and (max-width: 600px) {
+height: 300px;
+  }
 `;
 const Desc = styled.div`
 font-size: 24px;
 font-weight: 300;
 margin-bottom: 20px;
+@media only screen and (max-width: 600px) {
+text-align: center;
+
+  }
 `;
 const Title = styled.h1`
 font-size: 70px;
@@ -39,6 +46,9 @@ background-color: white;
 display: flex;
 justify-content: space-between;
 border: 1px solid lightgray;
+@media only screen and (max-width: 600px) {
+width: 80%;
+  }
 `;
 const Button = styled.button`
 flex: 1;

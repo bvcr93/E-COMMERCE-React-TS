@@ -59,6 +59,9 @@ export const Footer = () => {
 };
 const Container = styled.div`
   display: flex;
+  @media only screen and (max-width: 600px) {
+flex-direction: column;
+  }
 `;
 const Left = styled.div`
   flex: 1;
@@ -69,10 +72,16 @@ const Left = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  @media only screen and (max-width: 600px) {
+display: none
+  }
 `;
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  @media only screen and (max-width: 600px) {
+background-color: aliceblue;
+  }
 `;
 
 const Title = styled.h3`

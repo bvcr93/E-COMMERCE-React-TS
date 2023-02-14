@@ -7,16 +7,13 @@ import { Newsletter } from "../components/Newsletter";
 import { Footer } from "../components/Footer";
 
 const Home = () => {
-    
   return (
     <>
-     
-     
       <Slider />
-      <Categories/>
-      <Products/>
-      <Newsletter/>
-      <Footer/>
+      <Categories />
+      <Products />
+      <Newsletter />
+      <Footer />
     </>
   );
 };

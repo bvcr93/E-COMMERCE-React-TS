@@ -18,12 +18,12 @@ export const Slider = () => {
       <Arrow dir="left" onClick={() => handleClick("left")}>
         <ArrowBackIcon />
       </Arrow>
-      <Wrapper slideIndex={slideIndex}>
+      <Wrapper slideIndex={slideIndex} >
         {sliderItems.map((item) => (
 
 
           <Slide key={item.id} >
-            <ImgContainer>
+            <ImgContainer  >
               <Image>
                 <img 
                   className="img"
@@ -43,7 +43,7 @@ export const Slider = () => {
           </Slide>
         ))}
         <Slide>
-          <ImgContainer>
+          <ImgContainer >
             <Image>
               <img
                 className="img"
@@ -76,13 +76,16 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  @media only screen and (max-width: 600px) {
+display: none
+  }
 
 `;
 
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #fff3f3;
+  background-color: #f7d7d7;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -109,6 +112,8 @@ const Slide = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+
+
 `;
 const ImgContainer = styled.div`
   flex: 1;
