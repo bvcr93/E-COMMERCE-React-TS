@@ -9,21 +9,21 @@ const Navbar = () => {
 
 
   return (
-    <Container className="flex flex-col">
+    <Container className="flex flex-col ">
       <Wrapper  >
         <Left>
           <Language>EN</Language>
           <SearchContainer >
-            <Input className="md:w-full w-[50px]  " placeholder="Search"/>
+            <Input  placeholder="Search"/>
             <SearchIcon style={{ color: "gray", fontSize: 20 }} />
           </SearchContainer>
         </Left>
         <Center>
           <Link to="/">
-          <Logo className="md:flex flex-col  md:w-full w-[40px] md:text-4xl text-xl ml-10  ">BVCR</Logo>
+          <Logo >BVCR</Logo>
           </Link>
         </Center>
-        <Right className=" justify-center text-sm flex-2 ">
+        <Right>
          
           <Link to="/login">
           <MenuItem>SIGN IN</MenuItem>
@@ -51,6 +51,8 @@ const Input = styled.input`
 
 const Container = styled.div`
   height: 60px;
+margin-bottom: 20px;
+margin-top:10px;
 
 `;
 
@@ -59,6 +61,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+ 
   @media only screen and (max-width: 600px) {
 
   }

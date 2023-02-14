@@ -52,7 +52,7 @@ export const Product = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <Newsletter />
+  
    
     </Container>
   );
