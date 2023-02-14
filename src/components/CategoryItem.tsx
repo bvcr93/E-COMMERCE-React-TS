@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const CategoryItem = ({ item }: any) => {
@@ -6,7 +7,9 @@ export const CategoryItem = ({ item }: any) => {
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
+        <Link to = "/products">
         <Button>SHOP NOW</Button>
+        </Link>
       </Info>
     </Container>
   );

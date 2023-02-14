@@ -24,16 +24,16 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right className=" justify-center text-sm flex-2 ">
-          <Link to="/register">
-          <MenuItem>REGISTER</MenuItem>
-          </Link>
+         
           <Link to="/login">
           <MenuItem>SIGN IN</MenuItem>
           </Link>
           <MenuItem>
-            <Badge  color="primary">
+          <Link to = "/cart">
+            <Badge   color="primary">
               <ShoppingCartOutlinedIcon />
             </Badge>
+            </Link>
           </MenuItem>
         </Right>
       </Wrapper>

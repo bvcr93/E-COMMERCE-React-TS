@@ -1,8 +1,8 @@
-import React from 'react'
+
 import styled from 'styled-components'
-import Announcment from '../components/Announcment'
+
 import { Footer } from '../components/Footer'
-import Navbar from '../components/Navbar'
+
 import { Newsletter } from '../components/Newsletter'
 import { Products } from '../components/Products'
 
@@ -46,7 +46,7 @@ export const ProductList = () => {
       </FilterContainer>
       <Products/>
       <Newsletter/>
-      <Footer/>
+
     </Container>
   )
 }
