@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { popularProducts } from "../data";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
 
 export const Product = () => {
   const [count, setCount] = useState(0);
   const { id } = useParams();
   const items = popularProducts.find((item) => item.id.toString() === id);
+  const addToCart = useContext(CartContext)
   return (
     <Container>
       <Wrapper>
@@ -51,7 +53,7 @@ export const Product = () => {
                 +
               </ButtonClick>
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+           <Button>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

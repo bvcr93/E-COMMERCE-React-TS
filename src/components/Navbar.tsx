@@ -51,12 +51,10 @@ const Input = styled.input`
 
 const Container = styled.div`
   height: 60px;
-margin-bottom: 20px;
+margin-bottom: 40px;
 margin-top:10px;
-/* padding-left: 30px;
-padding-right: 30px; */
-max-width: 95%;
-margin: auto;
+
+
 `;
 
 const Wrapper = styled.div`

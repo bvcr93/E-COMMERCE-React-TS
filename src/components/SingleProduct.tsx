@@ -3,11 +3,15 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
+
 export const Product = ({ item }: any) => {
 
-
+const addToCart = useContext(CartContext)
   return (
+    <>
     <Container>
 
       <Image src={item.img} />
@@ -16,7 +20,9 @@ export const Product = ({ item }: any) => {
           <ShoppingCartOutlinedIcon />
         </Icon>
         <Icon>
+          <Link to = {`/product/${item.id}`}>
           <SearchOutlinedIcon />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlinedIcon />
@@ -24,6 +30,9 @@ export const Product = ({ item }: any) => {
         </Icon>
       </Info>
     </Container>
+
+    
+    </>
   );
 };
 const Info = styled.div`
@@ -42,6 +51,8 @@ const Info = styled.div`
   transition: all 0.5s ease;
   cursor: pointer;
 `;
+
+
 const Container = styled.div`
   flex: 1;
   margin: 5px;

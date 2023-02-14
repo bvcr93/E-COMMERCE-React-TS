@@ -1,13 +1,19 @@
 import { Add, Remove } from "@mui/icons-material";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { CartContext } from "../context/CartContext";
 
 export const Cart = () => {
+
   return (
     <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
+          <Link to ="/products">
           <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your WishList(0)</TopText>

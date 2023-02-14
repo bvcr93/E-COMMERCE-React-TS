@@ -3,6 +3,7 @@ import "./App.css";
 import Announcment from "./components/Announcment";
 import Navbar from "./components/Navbar";
 import { SharedLayout } from "./components/SharedLayout";
+import { CartProvider } from "./context/CartContext";
 import { Cart } from "./pages/Cart";
 import Home from "./pages/Home";
 import { Login } from "./pages/Login";
@@ -13,6 +14,7 @@ import { Register } from "./pages/Register";
 function App() {
   return (
     <>
+    <CartProvider>
       <Announcment />
     
       <Routes>
@@ -25,6 +27,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
+      </CartProvider>
     </>
   );
 }
