@@ -59,6 +59,7 @@ export const Footer = () => {
 };
 const Container = styled.div`
   display: flex;
+  background-color: aliceblue;
   @media only screen and (max-width: 600px) {
 flex-direction: column;
   }
