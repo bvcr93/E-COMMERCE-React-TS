@@ -5,7 +5,7 @@ export const Products = () => {
   return (
     <Container>
       {popularProducts.map((item) => (
-        <Product item={item} key={item.id} />
+        <Product item={item} key={item.id} id={0}  />
       ))}
     </Container>
   );

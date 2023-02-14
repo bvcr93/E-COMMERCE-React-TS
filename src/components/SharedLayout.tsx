@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 export const SharedLayout = () => {
   return (
    <>
-   <Navbar/>
+   <Navbar id={0}/>
    <Outlet/>
    <Footer/>
    </>

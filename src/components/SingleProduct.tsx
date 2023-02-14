@@ -1,42 +1,40 @@
-
 import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext, useShopingCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+type StoreItemProps = {
+  id: number;
+  item: any;
+};
+export const Product = ({ id, item }: StoreItemProps) => {
+  const { increaseCartQty } = useShopingCart();
 
-export const Product = ({ item }: any) => {
-
-const addToCart = useContext(CartContext)
   return (
     <>
-    <Container>
-
-      <Image src={item.img} />
-      <Info>
-        <Icon>
-          <ShoppingCartOutlinedIcon />
-        </Icon>
-        <Icon>
-          <Link to = {`/product/${item.id}`}>
-          <SearchOutlinedIcon />
-          </Link>
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlinedIcon />
-          
-        </Icon>
-      </Info>
-    </Container>
-
-    
+      <Container>
+        <Image src={item.img} />
+        <Info>
+          <Icon>
+            <ShoppingCartOutlinedIcon onClick={() => increaseCartQty(id)} />
+          </Icon>
+          <Icon>
+            <Link to={`/product/${item.id}`}>
+              <SearchOutlinedIcon />
+            </Link>
+          </Icon>
+          <Icon>
+            <FavoriteBorderOutlinedIcon />
+          </Icon>
+          <CartQty></CartQty>
+        </Info>
+      </Container>
     </>
   );
 };
 const Info = styled.div`
-  
   width: 100%;
   height: 100%;
   position: absolute;
@@ -52,7 +50,6 @@ const Info = styled.div`
   cursor: pointer;
 `;
 
-
 const Container = styled.div`
   flex: 1;
   margin: 5px;
@@ -65,15 +62,21 @@ const Container = styled.div`
   position: relative;
   &:hover ${Info} {
     opacity: 1;
- 
   }
+`;
+
+const CartQty = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 30%;
+  left: 50;
+  color: white;
+  font-size: 18px;
 `;
 const Image = styled.img`
   height: 75%;
   z-index: 2;
- 
 `;
-
 
 const Icon = styled.div`
   width: 40px;
