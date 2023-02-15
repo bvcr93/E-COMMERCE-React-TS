@@ -7,14 +7,14 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 type Props = {
-  id: number;
+  id?: number;
 };
 export const Cart = ({ id }: Props) => {
-  const { removeFromCart, getItemQty, increaseCartQty, decreaseCartQty } =
+  const { removeFromCart, getItemQty, increaseCartQty, decreaseCartQty,cartItems } =
     useShopingCart();
   const item = popularProducts.find((item) => item.id === id);
-
-  const quantities = getItemQty(id);
+  // if (!item) return null;
+  const qty = getItemQty(id!);
   return (
     <Container>
       <Wrapper>
@@ -24,24 +24,25 @@ export const Cart = ({ id }: Props) => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping Bag {quantities}</TopText>
+            <TopText>Shopping Bag {qty}</TopText>
             <TopText>Your WishList(0)</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton >CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
             <Product>
               <ProductDetail>
-                <Image src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80" />
+                <Image src={item?.img} />
+                
                 <Details>
                   <ProductName>
                     <b>Product:</b> {item?.name}
                   </ProductName>
                   <ProductId>
                     <b>ID:</b> {item?.id}
-                  </ProductId>
-                  <ProductColor color="black" />
+                  </ProductId> 
+                  <ProductColor color="brown" /> 
                   <ProductSize>
                     <b>Size:</b> 37.5
                   </ProductSize>
@@ -50,20 +51,26 @@ export const Cart = ({ id }: Props) => {
               <PriceDetail>
                 <ProductAmountContainer>
                   <RemoveCircleOutlineIcon
-                    onClick={() => decreaseCartQty(id)}
+                    onClick={() => decreaseCartQty(id!)}
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
-                  <ProductAmount>{quantities}</ProductAmount>
+                  <ProductAmount>{qty}</ProductAmount>
 
                   <AddCircleOutlineIcon
-                    onClick={() => increaseCartQty(id)}
+                    onClick={() => increaseCartQty(id!)}
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
                 </ProductAmountContainer>
-                <ButtonRemove onClick={() => removeFromCart(id)}>
+                <ButtonRemove onClick={() => removeFromCart(id!)}>
                   REMOVE FROM CART
                 </ButtonRemove>
-                <ProductPrice>$30</ProductPrice>
+                <ProductPrice>total:{
+  cartItems.reduce((total, cartItem) => {
+    const item = popularProducts.find((i) => i.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0)
+}
+</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -82,7 +89,6 @@ export const Cart = ({ id }: Props) => {
               <SummaryItemPrice>$ -6</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText type="total">Total</SummaryItemText>
               <SummaryItemPrice>$ -6</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
@@ -93,7 +99,7 @@ export const Cart = ({ id }: Props) => {
   );
 };
 const Container = styled.div`
-  padding: 20px;
+  padding: 0px 40px;
 `;
 const ProductName = styled.span``;
 const Wrapper = styled.div`
@@ -142,6 +148,9 @@ const ProductPrice = styled.div`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  @media only screen and (max-width: 600px) {
+    margin-top:20px ;
+  }
 `;
 const ProductSize = styled.span``;
 const ProductId = styled.span``;
@@ -149,10 +158,10 @@ const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  background: black;
+  color: white;
+  border: none;
+ 
 `;
 const ProductAmount = styled.div`
   font-size: 24px;
@@ -198,12 +207,14 @@ const TopText = styled.span`
   margin: 0px 10px;
 `;
 const Image = styled.img`
-  width: 200px;
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
 `;
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 `;
 
 const PriceDetail = styled.div`
@@ -229,8 +240,7 @@ const SummaryItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
+
 `;
 
 const SummaryItemText = styled.span``;
@@ -243,4 +253,5 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  border: none;
 `;

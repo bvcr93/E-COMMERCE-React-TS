@@ -1,17 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from "react-router-dom";
 import { useShopingCart } from "../context/CartContext";
-type Props = {
-  id: number
-}
-const Navbar = ({id}:Props) => {
 
-const {getItemQty} = useShopingCart()
-const quantity = getItemQty(id)
+const Navbar = () => {
+
+const { cartQty} = useShopingCart()
+
 
   return (
     <Container className="flex flex-col ">
@@ -37,7 +34,7 @@ const quantity = getItemQty(id)
           <Link to = "/cart">
             <Badge sx = {{color: "black"}}>
               <ShoppingCartOutlinedIcon />
-            
+           {cartQty}
             </Badge>
             </Link>
           </MenuItem>

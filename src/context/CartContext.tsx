@@ -12,15 +12,14 @@ type CartItem = {
 };
 
 interface ShoppingCartContext {
-  // declaring functions for cartContext
+
   getItemQty: (id: number) => number;
   increaseCartQty: (id: number) => void;
   decreaseCartQty: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQty: number;
   cartItems: CartItem[];
-  openCart: () => void;
-  closeCart: () => void;
+
 }
 export const CartContext = createContext({} as ShoppingCartContext);
 
@@ -30,7 +29,6 @@ export function useShopingCart() {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -38,8 +36,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const cartQty = cartItems.reduce((qty, item) => item.quantity + qty, 0);
 
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
+
 
   function getItemQty(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -89,8 +86,7 @@ export function CartProvider({ children }: CartProviderProps) {
         removeFromCart,
         cartQty,
         cartItems,
-        openCart,
-        closeCart,
+     
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-interface Item {
+interface SliderItem {
   id: number
   img: string
   title: string
@@ -7,7 +7,7 @@ interface Item {
   
 }
 
-export const sliderItems: Item[] = [
+export const sliderItems: SliderItem[] = [
     {
       id: 1,
       img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -63,7 +63,8 @@ export interface Product {
     {
       id:1,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
-    name: "White Shirt"
+    name: "White Shirt",
+    price:10
     },
  
     {
@@ -84,7 +85,7 @@ export interface Product {
       id:6,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
       price: 10,
-    name: "Woman's Coat"
+    name: "Hat"
     },
  
     {

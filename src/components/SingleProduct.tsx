@@ -9,8 +9,8 @@ type StoreItemProps = {
   id: number;
   item: any;
 };
-export const Product = ({ id, item }: StoreItemProps) => {
-  const { increaseCartQty } = useShopingCart();
+export const Product = ({ item,id }: StoreItemProps) => {
+const {increaseCartQty} = useShopingCart()
 
   return (
     <>
@@ -18,7 +18,7 @@ export const Product = ({ id, item }: StoreItemProps) => {
         <Image src={item.img} />
         <Info>
           <Icon>
-            <ShoppingCartOutlinedIcon onClick={() => increaseCartQty(id)} />
+            <ShoppingCartOutlinedIcon onClick = {() => increaseCartQty(id)}/>
           </Icon>
           <Icon>
             <Link to={`/product/${item.id}`}>
@@ -28,7 +28,7 @@ export const Product = ({ id, item }: StoreItemProps) => {
           <Icon>
             <FavoriteBorderOutlinedIcon />
           </Icon>
-          <CartQty></CartQty>
+        
         </Info>
       </Container>
     </>

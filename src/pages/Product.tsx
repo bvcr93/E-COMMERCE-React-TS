@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { popularProducts } from "../data";
-import { useContext, useState } from "react";
-import { CartContext, useShopingCart } from "../context/CartContext";
+import { useShopingCart } from "../context/CartContext";
 
 type StoreItemProps = {
-  ids: number;
+  qty?: number;
  
 };
 
-export const Product = ({ids}:StoreItemProps) => {
+export const Product = ({qty}:StoreItemProps) => {
 
-  const [count, setCount] = useState(0);
   const { id } = useParams();
   const items = popularProducts.find((item) => item.id.toString() === id);
   const { increaseCartQty } = useShopingCart();
+ console.log(items);
  
   return (
     <Container>
@@ -52,16 +51,16 @@ export const Product = ({ids}:StoreItemProps) => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <ButtonClick onClick={() => setCount((prev) => prev - 1)}>
+              <ButtonClick >
                 -
               </ButtonClick>
-              <Amount>{count}</Amount>
-              <ButtonClick onClick={() => setCount((prev) => prev + 1)}>
+              <Amount>1</Amount>
+              <ButtonClick >
                 +
               </ButtonClick>
             </AmountContainer>
-           <Button onClick={() => increaseCartQty(ids)}>ADD TO CART</Button>
-           <span>{}</span>
+           <Button onClick={() => increaseCartQty(qty!)}>ADD TO CART</Button>
+           
           </AddContainer>
         </InfoContainer>
       </Wrapper>
