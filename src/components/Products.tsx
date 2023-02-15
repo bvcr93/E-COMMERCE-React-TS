@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { popularProducts } from "../data";
 import { Product } from "./SingleProduct";
+
 export const Products = () => {
   return (
     <Container>
       {popularProducts.map((item) => (
-        <Product item={item} key={item.id} id={0}  />
+        <Product item={item} key={item.id} id={0} />
       ))}
     </Container>
   );

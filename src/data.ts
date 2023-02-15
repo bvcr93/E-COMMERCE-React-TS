@@ -52,14 +52,14 @@ export const sliderItems: SliderItem[] = [
     },
   ];
 
-export interface Product {
+export interface ProductItem {
   id: number
   img: string
   price?: number
   name?: string
 }
 
-  export const popularProducts: Product[] = [
+  export const popularProducts: ProductItem[] = [
     {
       id:1,
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",

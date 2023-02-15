@@ -11,7 +11,7 @@ const { cartQty} = useShopingCart()
 
 
   return (
-    <Container className="flex flex-col ">
+    <Container>
       <Wrapper  >
         <Left>
           <Language>EN</Language>
@@ -67,9 +67,7 @@ const Wrapper = styled.div`
   align-items: center;
 
  
-  @media only screen and (max-width: 600px) {
-
-  }
+ 
 `;
 
 const Left = styled.div`

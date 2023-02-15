@@ -6,47 +6,39 @@ import { sliderItems } from "../data";
 import { Link } from "react-router-dom";
 
 export const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0)
-  const handleClick = (direction: string): void => { 
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction: string): void => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
-  }
+  };
   return (
     <Container>
       <Arrow dir="left" onClick={() => handleClick("left")}>
         <ArrowBackIcon />
       </Arrow>
-      <Wrapper slideIndex={slideIndex} >
+      <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-
-
-          <Slide key={item.id} >
-            <ImgContainer  >
+          <Slide key={item.id}>
+            <ImgContainer>
               <Image>
-                <img 
-                  className="img"
-                  src={item.img}
-                  alt=""
-                />
+                <img className="img" src={item.img} alt="" />
               </Image>
             </ImgContainer>
 
             <InfoContainer>
               <Title>{item.title}</Title>
-              <Desc>
-                {item.desc}
-              </Desc>
-              <Link to ="/products">
-              <Button>SHOP NOW</Button>
+              <Desc>{item.desc}</Desc>
+              <Link to="/products">
+                <Button>SHOP NOW</Button>
               </Link>
             </InfoContainer>
           </Slide>
         ))}
         <Slide>
-          <ImgContainer >
+          <ImgContainer>
             <Image>
               <img
                 className="img"
@@ -63,7 +55,7 @@ export const Slider = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
               magnam.
             </Desc>
-            <Button >SHOP NOW</Button>
+            <Button>SHOP NOW</Button>
           </InfoContainer>
         </Slide>
       </Wrapper>
@@ -80,9 +72,8 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
   @media only screen and (max-width: 600px) {
-display: none
+    display: none;
   }
-
 `;
 
 const Arrow = styled.div`
@@ -106,7 +97,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transform: translateX(${props => props.slideIndex * -100}vw);
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
   transition: all 1s ease;
 `;
 
@@ -115,8 +106,6 @@ const Slide = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-
-
 `;
 const ImgContainer = styled.div`
   flex: 1;
@@ -136,18 +125,17 @@ const Desc = styled.p`
   text-transform: uppercase;
 `;
 const Button = styled.button`
-padding: 10px;
-font-size: 20px;
-background-color: transparent;
-cursor: pointer;
-&:hover {
-  background-color: black;
-  color: white;
-}
-`
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;
 
 const Image = styled.image`
   height: 80%;
   padding-left: 100px;
-  
 `;

@@ -1,4 +1,3 @@
-import { Add, Remove } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useShopingCart } from "../context/CartContext";
@@ -13,7 +12,7 @@ export const Cart = ({ id }: Props) => {
   const { removeFromCart, getItemQty, increaseCartQty, decreaseCartQty,cartItems } =
     useShopingCart();
   const item = popularProducts.find((item) => item.id === id);
-  // if (!item) return null;
+
   const qty = getItemQty(id!);
   return (
     <Container>
@@ -33,8 +32,7 @@ export const Cart = ({ id }: Props) => {
           <Info>
             <Product>
               <ProductDetail>
-                <Image src={item?.img} />
-                
+                <Image src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80" />
                 <Details>
                   <ProductName>
                     <b>Product:</b> {item?.name}

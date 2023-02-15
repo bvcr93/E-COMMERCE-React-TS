@@ -2,15 +2,17 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { useContext } from "react";
-import { CartContext, useShopingCart } from "../context/CartContext";
+import {  useShopingCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { ProductItem } from "../data";
+
+
 type StoreItemProps = {
   id: number;
-  item: any;
+  item: ProductItem;
 };
-export const Product = ({ item,id }: StoreItemProps) => {
-const {increaseCartQty} = useShopingCart()
+export const Product = ({ item }: StoreItemProps) => {
+  const { increaseCartQty } = useShopingCart();
 
   return (
     <>
@@ -18,7 +20,7 @@ const {increaseCartQty} = useShopingCart()
         <Image src={item.img} />
         <Info>
           <Icon>
-            <ShoppingCartOutlinedIcon onClick = {() => increaseCartQty(id)}/>
+            <ShoppingCartOutlinedIcon  />
           </Icon>
           <Icon>
             <Link to={`/product/${item.id}`}>
@@ -28,7 +30,6 @@ const {increaseCartQty} = useShopingCart()
           <Icon>
             <FavoriteBorderOutlinedIcon />
           </Icon>
-        
         </Info>
       </Container>
     </>
@@ -65,14 +66,6 @@ const Container = styled.div`
   }
 `;
 
-const CartQty = styled.div`
-  display: flex;
-  position: absolute;
-  bottom: 30%;
-  left: 50;
-  color: white;
-  font-size: 18px;
-`;
 const Image = styled.img`
   height: 75%;
   z-index: 2;

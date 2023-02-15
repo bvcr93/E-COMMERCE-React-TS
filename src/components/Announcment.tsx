@@ -20,5 +20,9 @@ align-items: center;
 justify-content: center;
 font-size: 16px;
 font-weight: 500;
+@media only screen and (max-width: 600px) {
+padding: 20px 30px;
+text-align: center;
+}
 
 `
