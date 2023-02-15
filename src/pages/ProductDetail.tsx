@@ -4,17 +4,15 @@ import { popularProducts } from "../data";
 import { useShopingCart } from "../context/CartContext";
 
 type StoreItemProps = {
-  qty?: number;
- 
+  itemId: number;
 };
 
-export const Product = ({qty}:StoreItemProps) => {
-
+export const Product = ({ itemId }: StoreItemProps) => {
   const { id } = useParams();
   const items = popularProducts.find((item) => item.id.toString() === id);
   const { increaseCartQty } = useShopingCart();
- console.log(items);
- 
+  console.log("items in cart", items);
+
   return (
     <Container>
       <Wrapper>
@@ -51,16 +49,11 @@ export const Product = ({qty}:StoreItemProps) => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <ButtonClick >
-                -
-              </ButtonClick>
+              <ButtonClick>-</ButtonClick>
               <Amount>1</Amount>
-              <ButtonClick >
-                +
-              </ButtonClick>
+              <ButtonClick>+</ButtonClick>
             </AmountContainer>
-           <Button onClick={() => increaseCartQty(qty!)}>ADD TO CART</Button>
-           
+            <Button onClick={() => increaseCartQty(itemId)}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

@@ -2,17 +2,16 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import {  useShopingCart } from "../context/CartContext";
+import { useShopingCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { ProductItem } from "../data";
-
 
 type StoreItemProps = {
   id: number;
   item: ProductItem;
 };
-export const Product = ({ item }: StoreItemProps) => {
-  const { increaseCartQty } = useShopingCart();
+export const Product = ({ item, id }: StoreItemProps) => {
+
 
   return (
     <>

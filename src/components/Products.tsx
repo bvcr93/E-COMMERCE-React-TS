@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { popularProducts } from "../data";
-import { Product } from "./SingleProduct";
+import { Product } from "./HoverIcons";
 
 export const Products = () => {
   return (

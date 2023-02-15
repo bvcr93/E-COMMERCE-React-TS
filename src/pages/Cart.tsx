@@ -4,16 +4,23 @@ import { useShopingCart } from "../context/CartContext";
 import { popularProducts } from "../data";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { CartItem } from "../components/CartItem";
 
 type Props = {
-  id?: number;
+  id: number;
 };
 export const Cart = ({ id }: Props) => {
-  const { removeFromCart, getItemQty, increaseCartQty, decreaseCartQty,cartItems } =
-    useShopingCart();
-  const item = popularProducts.find((item) => item.id === id);
+  const {
+    removeFromCart,
+    getItemQty,
+    increaseCartQty,
+    decreaseCartQty,
+    cartItems,
+  } = useShopingCart();
 
-  const qty = getItemQty(id!);
+
+
+  const qty = getItemQty(id);
   return (
     <Container>
       <Wrapper>
@@ -26,49 +33,54 @@ export const Cart = ({ id }: Props) => {
             <TopText>Shopping Bag {qty}</TopText>
             <TopText>Your WishList(0)</TopText>
           </TopTexts>
-          <TopButton >CHECKOUT NOW</TopButton>
+          <TopButton>CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
             <Product>
-              <ProductDetail>
-                <Image src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80" />
+              {cartItems.map((item,index) => (
+                <CartItem  key={index} {...item}/>
+              ))}
+              {/* <ProductDetail>
+                <Image src={item?.img} />
                 <Details>
                   <ProductName>
                     <b>Product:</b> {item?.name}
                   </ProductName>
                   <ProductId>
                     <b>ID:</b> {item?.id}
-                  </ProductId> 
-                  <ProductColor color="brown" /> 
+                  </ProductId>
+                  <ProductColor color="brown" />
                   <ProductSize>
                     <b>Size:</b> 37.5
                   </ProductSize>
                 </Details>
-              </ProductDetail>
+              </ProductDetail> */}
               <PriceDetail>
                 <ProductAmountContainer>
                   <RemoveCircleOutlineIcon
-                    onClick={() => decreaseCartQty(id!)}
+                    onClick={() => decreaseCartQty(id)}
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
                   <ProductAmount>{qty}</ProductAmount>
 
                   <AddCircleOutlineIcon
-                    onClick={() => increaseCartQty(id!)}
+                    onClick={() => increaseCartQty(id)}
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
                 </ProductAmountContainer>
-                <ButtonRemove onClick={() => removeFromCart(id!)}>
+                <ButtonRemove onClick={() => removeFromCart(id)}>
                   REMOVE FROM CART
                 </ButtonRemove>
-                <ProductPrice>total:{
-  cartItems.reduce((total, cartItem) => {
-    const item = popularProducts.find((i) => i.id === cartItem.id);
-    return total + (item?.price || 0) * cartItem.quantity;
-  }, 0)
-}
-</ProductPrice>
+                <ProductPrice>
+                  total:
+                  {cartItems.reduce((total, cartItem) => {
+                    const item = popularProducts.find(
+                      (i) => i.id === cartItem.id
+                    );
+                    return total + (item?.price || 0) * cartItem.quantity;
+                  }, 0)}
+                </ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -147,7 +159,7 @@ const ProductDetail = styled.div`
   flex: 2;
   display: flex;
   @media only screen and (max-width: 600px) {
-    margin-top:20px ;
+    margin-top: 20px;
   }
 `;
 const ProductSize = styled.span``;
@@ -159,7 +171,6 @@ const TopButton = styled.button`
   background: black;
   color: white;
   border: none;
- 
 `;
 const ProductAmount = styled.div`
   font-size: 24px;
@@ -176,6 +187,7 @@ const ProductColor = styled.div`
 `;
 const Product = styled.div`
   display: flex;
+ 
   justify-content: space-between;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -238,7 +250,6 @@ const SummaryItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-
 `;
 
 const SummaryItemText = styled.span``;
