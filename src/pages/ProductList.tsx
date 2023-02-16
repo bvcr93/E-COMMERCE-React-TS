@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { Newsletter } from '../components/Newsletter'
 import { Products } from '../components/Products'
+import { Produkt } from '../components/Produkt'
 
 export const ProductList = () => {
   return (
@@ -45,6 +46,7 @@ export const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products/>
+   
       <Newsletter/>
 
     </Container>

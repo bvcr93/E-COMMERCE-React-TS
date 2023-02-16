@@ -6,7 +6,7 @@ export const Products = () => {
   return (
     <Container>
       {popularProducts.map((item) => (
-        <Product item={item} key={item.id} id={0} />
+        <Product item={item} key={item.id} id={item.id} />
       ))}
     </Container>
   );

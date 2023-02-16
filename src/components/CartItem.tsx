@@ -4,7 +4,6 @@ import { useShopingCart } from "../context/CartContext";
 import { popularProducts } from "../data";
 type Props = {
   id: number;
-  
 };
 
 export const CartItem = ({ id }: Props) => {
@@ -21,7 +20,6 @@ export const CartItem = ({ id }: Props) => {
   );
 };
 const Container = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: center;

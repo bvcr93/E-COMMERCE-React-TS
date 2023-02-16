@@ -7,20 +7,22 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { CartItem } from "../components/CartItem";
 
 type Props = {
-  id: number;
-};
-export const Cart = ({ id }: Props) => {
+  id: number
+}
+
+export const Cart = ({id}:Props) => {
   const {
     removeFromCart,
     getItemQty,
     increaseCartQty,
     decreaseCartQty,
     cartItems,
+    cartQty
   } = useShopingCart();
 
 
 
-  const qty = getItemQty(id);
+  
   return (
     <Container>
       <Wrapper>
@@ -30,7 +32,7 @@ export const Cart = ({ id }: Props) => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping Bag {qty}</TopText>
+            <TopText>Shopping Bag {cartQty}</TopText>
             <TopText>Your WishList(0)</TopText>
           </TopTexts>
           <TopButton>CHECKOUT NOW</TopButton>
@@ -59,13 +61,13 @@ export const Cart = ({ id }: Props) => {
               <PriceDetail>
                 <ProductAmountContainer>
                   <RemoveCircleOutlineIcon
-                    onClick={() => decreaseCartQty(id)}
+                  
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
-                  <ProductAmount>{qty}</ProductAmount>
+                  <ProductAmount>{cartQty}</ProductAmount>
 
                   <AddCircleOutlineIcon
-                    onClick={() => increaseCartQty(id)}
+                   
                     sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
                   />
                 </ProductAmountContainer>
