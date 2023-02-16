@@ -60,7 +60,4 @@ font-size: 20px;
 
 const ProductAmount = styled.div`
 display: flex;
-justify-content: space-around;
-width: 20%;
-align-items: center;
 `

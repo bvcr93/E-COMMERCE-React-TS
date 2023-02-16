@@ -20,7 +20,12 @@ export const Cart = ({id}:Props) => {
     cartQty
   } = useShopingCart();
 
-
+const total = cartItems.reduce((total, cartItem) => {
+  const item = popularProducts.find(
+    (i) => i.id === cartItem.id
+  );
+  return total + (item?.price || 0) * cartItem.quantity;
+}, 0)
 
   
   return (
@@ -46,17 +51,12 @@ export const Cart = ({id}:Props) => {
               
               <PriceDetail>
                 
-                <ButtonRemove onClick={() => removeFromCart(id)}>
+                <ButtonRemove>
                   REMOVE FROM CART
                 </ButtonRemove>
                 <ProductPrice>
-                  total: $
-                  {cartItems.reduce((total, cartItem) => {
-                    const item = popularProducts.find(
-                      (i) => i.id === cartItem.id
-                    );
-                    return total + (item?.price || 0) * cartItem.quantity;
-                  }, 0)}
+                  Total: $
+                 {total}
                 </ProductPrice>
               </PriceDetail>
             </Product>
@@ -64,8 +64,8 @@ export const Cart = ({id}:Props) => {
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$80</SummaryItemPrice>
+              <SummaryItemText>Subtotal : </SummaryItemText>
+              <SummaryItemPrice> ${total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
