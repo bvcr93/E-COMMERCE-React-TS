@@ -43,39 +43,14 @@ export const Cart = ({id}:Props) => {
               {cartItems.map((item,index) => (
                 <CartItem  key={index} {...item}/>
               ))}
-              {/* <ProductDetail>
-                <Image src={item?.img} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> {item?.name}
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> {item?.id}
-                  </ProductId>
-                  <ProductColor color="brown" />
-                  <ProductSize>
-                    <b>Size:</b> 37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetail> */}
+              
               <PriceDetail>
-                <ProductAmountContainer>
-                  <RemoveCircleOutlineIcon
-                  
-                    sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
-                  />
-                  <ProductAmount>{cartQty}</ProductAmount>
-
-                  <AddCircleOutlineIcon
-                   
-                    sx={{ color: "#564d65", margin: "5px", fontSize: "25px" }}
-                  />
-                </ProductAmountContainer>
+                
                 <ButtonRemove onClick={() => removeFromCart(id)}>
                   REMOVE FROM CART
                 </ButtonRemove>
                 <ProductPrice>
-                  total:
+                  total: $
                   {cartItems.reduce((total, cartItem) => {
                     const item = popularProducts.find(
                       (i) => i.id === cartItem.id

@@ -18,7 +18,7 @@ interface ShoppingCartContext {
   decreaseCartQty: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQty: number;
-  cartItems: CartItem[];
+  cartItems: CartItem[] ;
 
 }
 export const CartContext = createContext({} as ShoppingCartContext);
