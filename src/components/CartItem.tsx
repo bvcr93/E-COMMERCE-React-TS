@@ -4,13 +4,13 @@ import { useShopingCart } from "../context/CartContext";
 import { popularProducts } from "../data";
 import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 type Props = {
   id: number;
 };
 
 export const CartItem = ({ id }: Props) => {
-  const { decreaseCartQty, increaseCartQty, cartItems } = useShopingCart();
+  const { decreaseCartQty, increaseCartQty, cartItems, removeFromCart } = useShopingCart();
   const item = popularProducts.find((item) => item.id === id);
 
   return (
@@ -27,6 +27,7 @@ export const CartItem = ({ id }: Props) => {
           sx={{ fontSize: "28px" }}
         />
       </ButtonContainer>
+      <DeleteIcon sx = {{marginTop: "10px", fontSize:"30px", cursor:"pointer"}} onClick={() => removeFromCart(id)}>remove</DeleteIcon >
     </Container>
   );
 };

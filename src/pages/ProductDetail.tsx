@@ -3,14 +3,10 @@ import { useParams } from "react-router-dom";
 import { popularProducts } from "../data";
 import { useShopingCart } from "../context/CartContext";
 
-type StoreItemProps = {
-  itemId: number;
-};
 
-export const Product = ({ itemId }: StoreItemProps) => {
+export const Product = () => {
   const { id } = useParams();
   const items = popularProducts.find((item) => item.id.toString() === id);
-  const { increaseCartQty } = useShopingCart();
   console.log("items in cart", items);
 
   return (
@@ -53,7 +49,7 @@ export const Product = ({ itemId }: StoreItemProps) => {
               <Amount>1</Amount>
               <ButtonClick>+</ButtonClick>
             </AmountContainer>
-            <Button onClick={() => increaseCartQty(itemId)}>ADD TO CART</Button>
+            <Button >ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

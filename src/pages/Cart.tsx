@@ -51,9 +51,7 @@ const total = cartItems.reduce((total, cartItem) => {
               
               <PriceDetail>
                 
-                <ButtonRemove>
-                  REMOVE FROM CART
-                </ButtonRemove>
+              
                 <ProductPrice>
                   Total: $
                  {total}
