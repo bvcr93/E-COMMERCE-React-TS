@@ -4,10 +4,14 @@ import { popularProducts } from "../data";
 import { useShopingCart } from "../context/CartContext";
 
 
+
 export const Product = () => {
   const { id } = useParams();
+  const itemId = id as string
   const items = popularProducts.find((item) => item.id.toString() === id);
   console.log("items in cart", items);
+
+  const {increaseCartQty} = useShopingCart()
 
   return (
     <Container>
@@ -49,7 +53,7 @@ export const Product = () => {
               <Amount>1</Amount>
               <ButtonClick>+</ButtonClick>
             </AmountContainer>
-            <Button >ADD TO CART</Button>
+            <Button onClick={() => increaseCartQty(Number(itemId))}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

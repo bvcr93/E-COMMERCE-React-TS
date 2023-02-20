@@ -6,23 +6,23 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 type Props = {}
 
 const SVGContainer = (props: Props) => {
-  return (
-    <Container>
-        <Card>
+    return (
+        <Container>
+            <Card>
 
-            <CheckroomIcon sx = {{fontSize:"150px", color:"gray"}}/>
-            <Title>Try it on the first occasion</Title>
-        </Card>
-        <Card>
-        <LocalPostOfficeIcon sx = {{fontSize:"150px", color:"gray"}}/>
-        <Title>Dont hesitate to email us!</Title>
-        </Card>
-        <Card>
-        <LocalShippingIcon sx = {{fontSize:"150px", color:"gray"}}/>
-        <Title>Fast delivery!</Title>
-        </Card>
-    </Container>
-  )
+                <CheckroomIcon sx={{ fontSize: "150px", color: "gray" }} />
+                <Title>Try it on the first occasion</Title>
+            </Card>
+            <Card>
+                <LocalPostOfficeIcon sx={{ fontSize: "150px", color: "gray" }} />
+                <Title>Dont hesitate to email us!</Title>
+            </Card>
+            <Card>
+                <LocalShippingIcon sx={{ fontSize: "150px", color: "gray" }} />
+                <Title>Fast delivery!</Title>
+            </Card>
+        </Container>
+    )
 }
 
 export default SVGContainer
@@ -32,6 +32,11 @@ height: 20vw;
 display: flex;
   padding: 20px;
   justify-content: space-between;
+  @media only screen and (max-width: 900px) {
+height: 100vh;
+display: flex;
+flex-direction: column;
+  }
 `
 const Card = styled.div`
 flex: 1;

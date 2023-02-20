@@ -6,28 +6,22 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { CartItem } from "../components/CartItem";
 
-type Props = {
-  id: number
-}
 
-export const Cart = ({id}:Props) => {
+export const Cart = () => {
   const {
     removeFromCart,
     getItemQty,
     increaseCartQty,
     decreaseCartQty,
     cartItems,
-    cartQty
+    cartQty,
   } = useShopingCart();
 
-const total = cartItems.reduce((total, cartItem) => {
-  const item = popularProducts.find(
-    (i) => i.id === cartItem.id
-  );
-  return total + (item?.price || 0) * cartItem.quantity;
-}, 0)
+  const total = cartItems.reduce((total, cartItem) => {
+    const item = popularProducts.find((i) => i.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0);
 
-  
   return (
     <Container>
       <Wrapper>
@@ -45,17 +39,12 @@ const total = cartItems.reduce((total, cartItem) => {
         <Bottom>
           <Info>
             <Product>
-              {cartItems.map((item,index) => (
-                <CartItem  key={index} {...item}/>
+              {cartItems.map((item, index) => (
+                <CartItem key={index} {...item} />
               ))}
-              
+
               <PriceDetail>
-                
-              
-                <ProductPrice>
-                  Total: $
-                 {total}
-                </ProductPrice>
+                <ProductPrice>Total: ${total}</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -162,7 +151,7 @@ const ProductColor = styled.div`
 `;
 const Product = styled.div`
   display: flex;
- 
+
   justify-content: space-between;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
