@@ -11,7 +11,7 @@ export const Product = () => {
   const items = popularProducts.find((item) => item.id.toString() === id);
   console.log("items in cart", items);
 
-  const {increaseCartQty} = useShopingCart()
+  const {increaseCartQty, cartQty} = useShopingCart()
 
   return (
     <Container>
@@ -54,12 +54,17 @@ export const Product = () => {
               <ButtonClick>+</ButtonClick>
             </AmountContainer>
             <Button onClick={() => increaseCartQty(Number(itemId))}>ADD TO CART</Button>
+            <CartTitle>Items in cart:  {cartQty}</CartTitle>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
     </Container>
   );
 };
+const CartTitle = styled.span`
+font-size: 25px;
+`
+
 const Container = styled.div``;
 const Image = styled.img`
   object-fit: cover;

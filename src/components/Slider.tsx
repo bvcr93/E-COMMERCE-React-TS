@@ -21,21 +21,21 @@ export const Slider = () => {
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-          <Slide key={item.id}>
-            <ImgContainer>
-              <Image>
-                <img className="img" src={item.img} alt="" />
-              </Image>
-            </ImgContainer>
-
-            <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Link to="/products">
-                <Button>SHOP NOW</Button>
-              </Link>
-            </InfoContainer>
-          </Slide>
+         <Slide key={item.id}>
+        <ImgContainer bg={item.img}>
+  <Image>
+    <img  src={item.img} alt="" />
+  </Image>
+</ImgContainer>
+         <InfoContainer>
+           <Title>{item.title}</Title>
+           <Desc>{item.desc}</Desc>
+           <Link to="/products">
+             <Button>SHOP NOW</Button>
+           </Link>
+         </InfoContainer>
+       </Slide>
+       
         ))}
         <Slide>
           <ImgContainer>
@@ -102,40 +102,72 @@ const Wrapper = styled.div`
 `;
 
 const Slide = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   width: 100vw;
   height: 100vh;
 `;
+
 const ImgContainer = styled.div`
   flex: 1;
+  
   height: 100%;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${(props) => props.bg});
+    background-size: cover;
+    object-fit: cover;
+    filter: brightness(30%) blur(3px);
+    z-index: -1;
+  }
 `;
+
+const Image = styled.div`
+  height: 100%;
+  background: url(${(props) => props.src});
+  object-fit: cover;
+
+`;
+
 const InfoContainer = styled.div`
-  flex: 1;
-  padding: 50px;
+ position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 `;
+
 const Title = styled.h1`
   font-size: 70px;
+  color: white;
+
 `;
+
 const Desc = styled.p`
   margin: 50px 0px;
   font-size: 20px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  color: white;
 `;
+
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+  border: 2px solid #fff;
+  color: #fff;
   &:hover {
     background-color: black;
-    color: white;
+    border-color: black;
   }
-`;
-
-const Image = styled.image`
-  height: 80%;
-  padding-left: 100px;
 `;

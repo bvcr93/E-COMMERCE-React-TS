@@ -9,7 +9,7 @@ const Navbar = () => {
   const { cartQty } = useShopingCart();
 
   return (
-    <Container>
+  
       <Wrapper>
         <Left>
           <Language>EN</Language>
@@ -37,7 +37,7 @@ const Navbar = () => {
           </MenuItem>
         </Right>
       </Wrapper>
-    </Container>
+
   );
 };
 
@@ -48,17 +48,12 @@ const Input = styled.input`
   outline: none;
 `;
 
-const Container = styled.div`
-  height: 60px;
-  margin-bottom: 40px;
-  margin-top: 10px;
-`;
-
 const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 
 const Left = styled.div`

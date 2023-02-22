@@ -4,6 +4,7 @@ import { Products } from "../components/Products";
 import { Newsletter } from "../components/Newsletter";
 import { LandingProducts } from "../components/LandingProducts";
 import SVGContainer from "../components/SVGContainer";
+import Reviews from "../components/Reviews";
 
 const Home = () => {
  
@@ -14,6 +15,7 @@ const Home = () => {
       <LandingProducts/>
       <Newsletter />
       <SVGContainer/>
+      <Reviews/>
    
     </>
   );

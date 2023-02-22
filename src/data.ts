@@ -9,7 +9,7 @@ export const sliderItems = [
   {
     id: 2,
     img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    title: "AUTUMN COLLECTION",
+    title: "AUTUMN SALE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
@@ -65,7 +65,7 @@ export const popularProducts: ProductItem[] = [
     id: 5,
     img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
     price: 10,
-    name: "item",
+    name: "Purse",
   },
   {
     id: 6,
@@ -87,3 +87,49 @@ export const popularProducts: ProductItem[] = [
     name: "item"
   },
 ];
+
+type Review = {
+  id: number
+  name: string
+  job: string
+  image: string
+  text: string
+}
+export const reviews: Review[] = [
+  {
+    id: 1,
+    name: 'susan smith',
+    job: 'web developer',
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg',
+    text:
+      "I'm baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry",
+  },
+  {
+    id: 2,
+    name: 'anna johnson',
+    job: 'web designer',
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg',
+    text:
+      'Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal.',
+  },
+  {
+    id: 3,
+    name: 'peter jones',
+    job: 'intern',
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg',
+    text:
+      'Sriracha literally flexitarian irony, vape marfa unicorn. Glossier tattooed 8-bit, fixie waistcoat offal activated charcoal slow-carb marfa hell of pabst raclette post-ironic jianbing swag.',
+  },
+  {
+    id: 4,
+    name: 'bill anderson',
+    job: 'the boss',
+    image:
+      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg',
+    text:
+      'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
+  },
+]

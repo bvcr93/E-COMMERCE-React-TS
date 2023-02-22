@@ -45,11 +45,13 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-background-color: #c9e0f9;
+background-color: #fdfdfd;
 border-radius: 20px;
+border: 1px solid lightgray;
 &:hover {
-background-color: #a8c8fb;
+background-color: #bfd6fb;
 transition: ease-in 0.3s;
+
 }
 `
 
