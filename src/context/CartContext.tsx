@@ -6,7 +6,7 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
-type CartItem = {
+export type CartItem = {
   id: number;
   quantity: number;
   name: string 
@@ -43,21 +43,23 @@ export function CartProvider({ children }: CartProviderProps) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQty(id: number, name: string | undefined = "") {
+  function increaseCartQty(id: number, name: string ) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
         return [...currItems, { id, quantity: 1, name }];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
+            return { ...item, quantity: item.quantity + 1, name };
           } else {
             return item;
           }
         });
       }
     });
-  }
+    return cartItems;
+}
+
 
   
   function decreaseCartQty(id: number) {

@@ -7,15 +7,20 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import DeleteIcon from "@mui/icons-material/Delete";
 type Props = {
   id: number;
+  name: string
 };
 
-export const CartItem = ({ id }: Props) => {
+export const CartItemComponent = ({ id, name }: Props) => {
   const { decreaseCartQty, increaseCartQty, removeFromCart } = useShopingCart();
   const item = popularProducts.find((item) => item.id === id);
 
   return (
     <Container>
-      <span>${item?.price}</span>
+      <ItemInfo>
+   
+      <p>{item?.name}</p>
+      </ItemInfo>
+    
       <Image src={item?.img} alt="" />
       <ButtonContainer>
         <RemoveCircleOutlineOutlinedIcon
@@ -23,7 +28,7 @@ export const CartItem = ({ id }: Props) => {
           sx={{ fontSize: "28px" }}
         />
         <AddCircleOutlineOutlinedIcon
-          onClick={() => increaseCartQty(id, item?.name ?? "")}
+          onClick={() => increaseCartQty(id,name)}
           sx={{ fontSize: "28px" }}
         />
       </ButtonContainer>
@@ -55,3 +60,11 @@ const ButtonContainer = styled.div`
   margin-top: 10px;
   color: #434343;
 `;
+
+const ItemInfo = styled.div`
+display: flex;
+font-size: 20px;
+align-items: center;
+justify-content: center;
+
+`

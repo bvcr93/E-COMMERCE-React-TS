@@ -11,6 +11,8 @@ const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+
 `;
 
 const ModalContent = styled.div`
@@ -25,22 +27,17 @@ const ModalContent = styled.div`
 const Modal = ({ isOpen, onClose, children }: any) => {
   if (!isOpen) return null;
   return (
-    <ModalWrapper  onClick={onClose}>
-       
-      <ModalContent>
-        {children}
-   
-       <CheckoutItem>
-
-       </CheckoutItem>
-      </ModalContent>
+    <ModalWrapper onClick={onClose}>
+      <ModalContent>{children}</ModalContent>
     </ModalWrapper>
   );
 };
 
 export default Modal;
 
+const ModalHeader = styled.div`
+  border: 1px solid black;
+  height: 20px;
+  background-color: aliceblue;
 
-const CheckoutItem = styled.div`
-
-`
+`;
