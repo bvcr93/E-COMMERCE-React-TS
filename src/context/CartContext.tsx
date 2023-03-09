@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
@@ -20,6 +20,8 @@ interface ShoppingCartContext {
   removeFromCart: (id: number) => void;
   cartQty: number;
   cartItems: CartItem[] ;
+  handleBuy: () => void
+  isConfirmed:boolean
 
 }
 export const CartContext = createContext({} as ShoppingCartContext);
@@ -30,6 +32,7 @@ export function useShopingCart() {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
+  const [isConfirmed, setIsConfirmed] = useState(false)
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -60,7 +63,11 @@ export function CartProvider({ children }: CartProviderProps) {
     return cartItems;
 }
 
+function handleBuy (){
+setIsConfirmed(true)
+console.log("confirm");
 
+}
   
   function decreaseCartQty(id: number) {
     setCartItems((currItems) => {
@@ -91,6 +98,9 @@ export function CartProvider({ children }: CartProviderProps) {
         removeFromCart,
         cartQty,
         cartItems,
+        handleBuy,
+        isConfirmed
+       
      
       }}
     >

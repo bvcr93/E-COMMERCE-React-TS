@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { popularProducts } from "../data";
 
-
-
-
 type Props = {
   name: string;
   id: number;
@@ -12,23 +9,18 @@ type Props = {
 };
 
 const CheckoutDetails = ({ name, quantity, id }: Props) => {
-    const [isConfirmed, setIsConfirmed] = useState(false)
-    const item = popularProducts.find((item) => item.id === id);
+  const item = popularProducts.find((item) => item.id === id);
   return (
     <Wrapper>
-         {isConfirmed ? (<span>thank you for buying</span>) : (
-             <>
-             <ItemInfo>
-             <ItemName>{name}</ItemName>
-             <ItemQuantity>Qty: {quantity}
-             <Image src={item?.img} alt="" />
-             </ItemQuantity>
-           </ItemInfo>
-           <ConfirmButton onClick={() => setIsConfirmed(true)}>BUY NOW</ConfirmButton>
-           </>
-         )  }
-     
-     
+      <>
+        <ItemInfo>
+          <ItemName>{name}</ItemName>
+          <ItemQuantity>
+            Qty: {quantity}
+            <Image src={item?.img} alt="" />
+          </ItemQuantity>
+        </ItemInfo>
+      </>
     </Wrapper>
   );
 };
@@ -36,7 +28,6 @@ const CheckoutDetails = ({ name, quantity, id }: Props) => {
 export default CheckoutDetails;
 
 const Wrapper = styled.div`
-
   padding: 30px;
   margin-bottom: 10px;
 `;
@@ -58,19 +49,18 @@ const ItemQuantity = styled.span`
 `;
 
 const Image = styled.img`
-
-width: 100px;
-height: 100px;
-
+  width: 100px;
+  height: 100px;
 `;
 
 const ConfirmButton = styled.button`
-width: 100%;
-background-color: black;
-color: white;
-padding: 5px;
-border: none;
-outline: none;
-font-size: 20px;
-cursor: pointer;
-`
+  width: 50%;
+
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+`;

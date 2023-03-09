@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useShopingCart } from "../context/CartContext";
 import { popularProducts } from "../data";
-import { ProductItem } from "../data";
 import Modal from "../components/ModalCheckout";
 import { useState } from "react";
 import CheckoutDetails from "../components/CheckoutDetails";
 import { CartItemComponent } from "../components/CartItem";
 
 
+
 export const Cart = () => {
-  const { cartItems, cartQty } = useShopingCart();
+  const { cartItems, cartQty, handleBuy, isConfirmed } = useShopingCart();
+  console.log(isConfirmed);
 
   const total = cartItems.reduce((total, cartItem) => {
     const item = popularProducts.find((i) => i.id === cartItem.id);
@@ -19,8 +20,13 @@ export const Cart = () => {
   }, 0);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleCheckout = () => {
     setIsModalOpen(true);
+  };
+  
+  const handleClose = () => {
+    setIsModalOpen(false);
   };
   return (
     <Container>
@@ -69,22 +75,35 @@ export const Cart = () => {
           </Summary>
         </Bottom>
       </Wrapper>
-      <Modal isOpen={isModalOpen} >
-     <ButtonClose onClick={()=> setIsModalOpen(false)}>X</ButtonClose>
-       
+      <Modal isOpen={isModalOpen} onClose={handleClose} >
+
+
         <CheckoutItem>
-          {cartItems.map((item) => {
-            const product = popularProducts.find((p) => p.id === item.id);
-            return (
-              <CheckoutDetails
-                key={item.id}
-                id={item.id}
-                quantity={item.quantity}
-                name={product?.name ?? ""}
-               
-              />
-            );
-          })}
+          {isConfirmed ? (
+            <ConfirmNotification>
+              THANKS FOR BUYING FROM US!
+            </ConfirmNotification>
+          ) : (
+            cartItems.map((item) => {
+              const product = popularProducts.find((p) => p.id === item.id);
+              return (
+                <CheckoutDetails
+                  key={item.id}
+                  id={item.id}
+                  quantity={item.quantity}
+                  name={product?.name ?? ""}
+                />
+              );
+            })
+          )}
+
+          <ConfirmContainer>
+            {!isConfirmed && (
+              <ConfirmPurchaseButton onClick={() => handleBuy()}>
+                BUY
+              </ConfirmPurchaseButton>
+            )}
+          </ConfirmContainer>
         </CheckoutItem>
       </Modal>
     </Container>
@@ -92,16 +111,29 @@ export const Cart = () => {
 };
 
 
-const ButtonClose = styled.div`
-position: fixed;
-right:700px;
-top: 250px;
-font-size: 25px;
-cursor: pointer;
-:hover{
-  color: teal;
-}
-`
+const ConfirmNotification = styled.div`
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+`;
+
+const ConfirmPurchaseButton = styled.button`
+  width: 50%;
+  margin: auto;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+`;
+const ConfirmContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 const CheckoutItem = styled.div``;
 const Container = styled.div`
   padding: 0px 40px;

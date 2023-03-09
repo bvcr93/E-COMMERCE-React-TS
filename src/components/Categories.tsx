@@ -19,7 +19,7 @@ const Container = styled.div`
   padding: 20px;
   justify-content: space-between;
   @media only screen and (max-width: 600px) {
-padding: 0px;
-flex-direction: column;
+    padding: 0px;
+    flex-direction: column;
   }
 `;
