@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { reviews } from '../data';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -8,18 +8,23 @@ const Reviews = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = reviews[index];
 
-  const handlePrevClick = () => {
-    setIndex((index - 1 + reviews.length) % reviews.length);
-  };
+  
+useEffect(() => {
 
-  const handleNextClick = () => {
-    setIndex((index + 1) % reviews.length);
-  };
+},[index])
+const handlePrevClick = () => {
+  setIndex((index - 1 + reviews.length) % reviews.length);
+};
+
+const handleNextClick = () => {
+  setIndex((index + 1) % reviews.length);
+};
+  
 
   return (
-    <Container>
+    <Container >
       <Title>What Our Customers Are Saying</Title>
-      <Slider>
+      <Slider >
         <ArrowBackIcon onClick={handlePrevClick} sx = {{cursor: "pointer"}} />
         <ReviewWrapper>
           <Image src={image} />
@@ -44,12 +49,17 @@ const Container = styled.div`
   align-items: center;
   background-color: #d0e1ff ;
   padding: 30px;
+ 
 `;
 
 const Title = styled.h2`
   font-size: 32px;
   margin-bottom: 30px;
   color: #333;
+  @media only screen and (max-width: 600px) {
+font-size: 25px;
+font-weight: 100;
+  }
 `;
 
 const Slider = styled.div`
@@ -58,6 +68,7 @@ const Slider = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 900px;
+
 `;
 
 const ReviewWrapper = styled.div`
@@ -70,6 +81,7 @@ const ReviewWrapper = styled.div`
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+
 `;
 
 const Image = styled.img`
@@ -82,6 +94,7 @@ const Image = styled.img`
 
 const Content = styled.div`
   flex-grow: 1;
+
 `;
 
 const Name = styled.p`
@@ -97,8 +110,10 @@ const Job = styled.p`
 `;
 
 const Text = styled.p`
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
+  padding: 10px;
+  color: #4e4e4e;
 `;
 
 export default Reviews;

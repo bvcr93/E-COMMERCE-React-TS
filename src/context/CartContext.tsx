@@ -9,12 +9,13 @@ type CartProviderProps = {
 type CartItem = {
   id: number;
   quantity: number;
+  name: string 
 };
 
 interface ShoppingCartContext {
 
   getItemQty: (id: number) => number;
-  increaseCartQty: (id: number) => void;
+  increaseCartQty: (id: number, name: string) => void;
   decreaseCartQty: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQty: number;
@@ -42,10 +43,10 @@ export function CartProvider({ children }: CartProviderProps) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQty(id: number) {
+  function increaseCartQty(id: number, name: string | undefined = "") {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+        return [...currItems, { id, quantity: 1, name }];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
@@ -57,6 +58,8 @@ export function CartProvider({ children }: CartProviderProps) {
       }
     });
   }
+
+  
   function decreaseCartQty(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {

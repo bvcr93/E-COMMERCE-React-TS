@@ -2,26 +2,23 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useShopingCart } from "../context/CartContext";
 import { popularProducts } from "../data";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { CartItem } from "../components/CartItem";
-
+import Modal from "../components/ModalCheckout";
+import { useState } from "react";
 
 export const Cart = () => {
-  const {
-    removeFromCart,
-    getItemQty,
-    increaseCartQty,
-    decreaseCartQty,
-    cartItems,
-    cartQty,
-  } = useShopingCart();
+  const { cartItems, cartQty } = useShopingCart();
 
   const total = cartItems.reduce((total, cartItem) => {
     const item = popularProducts.find((i) => i.id === cartItem.id);
     return total + (item?.price || 0) * cartItem.quantity;
   }, 0);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+const handleCheckout = () => {
+  setIsModalOpen(true)
+
+}
   return (
     <Container>
       <Wrapper>
@@ -65,13 +62,28 @@ export const Cart = () => {
             <SummaryItem>
               <SummaryItemPrice>$ -6</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button onClick = {handleCheckout}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <CheckoutItem>
+          {cartItems.map((item) => (
+            <div key={item.id}>
+        
+              <p>Quantity: {item.quantity}</p>
+            
+            </div>
+          ))}
+        </CheckoutItem>
+      </Modal>
     </Container>
   );
 };
+
+const CheckoutItem = styled.div`
+
+`
 const Container = styled.div`
   padding: 0px 40px;
 `;
@@ -81,20 +93,7 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 600px) {
     padding: 10px;
   }
-`;
-const ButtonRemove = styled.button`
-  padding: 10px;
-  border: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #f94e4e;
-    font-weight: bold;
-    color: white;
-  }
-`;
+`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
