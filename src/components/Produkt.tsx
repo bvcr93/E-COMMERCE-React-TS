@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Produkt = ({ id, name, price, img }: Props) => {
-  const { increaseCartQty, cartQty, cartItems,getItemQty } = useShopingCart();
+  const { increaseCartQty,getItemQty } = useShopingCart();
   const itemQty = getItemQty(id);
   return (
     <Container>
@@ -21,7 +21,7 @@ export const Produkt = ({ id, name, price, img }: Props) => {
       </Title>
 <ProductAmount>
       <ShoppingCartOutlinedIcon
-        onClick={() => increaseCartQty(id)}
+        onClick={() => increaseCartQty(id, name)}
         sx={{ marginTop: "20px", fontSize: "30px", cursor: "pointer" }}
       />
       <Amount>{itemQty > 0 && <p>({itemQty})</p>}</Amount>

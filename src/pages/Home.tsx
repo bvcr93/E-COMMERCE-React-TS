@@ -9,7 +9,7 @@ import Reviews from "../components/Reviews";
 const Home = () => {
  
   return (
-    <>
+    <div className="">
       <Slider />
       <Categories />
       <LandingProducts/>
@@ -17,7 +17,7 @@ const Home = () => {
       <SVGContainer/>
       <Reviews/>
    
-    </>
+    </div>
   );
 };
 
