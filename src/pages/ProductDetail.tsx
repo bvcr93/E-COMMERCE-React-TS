@@ -3,15 +3,13 @@ import { useParams } from "react-router-dom";
 import { popularProducts } from "../data";
 import { useShopingCart } from "../context/CartContext";
 
-
-
 export const Product = () => {
   const { id } = useParams();
-  const itemId = id as string
+  const itemId = id as string;
   const items = popularProducts.find((item) => item.id.toString() === id);
   console.log("items in cart", items);
 
-  const {increaseCartQty, cartQty} = useShopingCart()
+  const { increaseCartQty, cartQty } = useShopingCart();
 
   return (
     <Container>
@@ -53,10 +51,13 @@ export const Product = () => {
               <Amount>1</Amount>
               <ButtonClick>+</ButtonClick>
             </AmountContainer>
-            <Button onClick={() => increaseCartQty(Number(itemId), items?.name ?? '')}>ADD TO CART</Button>
+            <Button
+              onClick={() => increaseCartQty(Number(itemId), items?.name ?? "")}
+            >
+              ADD TO CART
+            </Button>
 
-
-            <CartTitle>Items in cart:  {cartQty}</CartTitle>
+            <CartTitle>Items in cart: {cartQty}</CartTitle>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
@@ -64,8 +65,8 @@ export const Product = () => {
   );
 };
 const CartTitle = styled.span`
-font-size: 25px;
-`
+  font-size: 25px;
+`;
 
 const Container = styled.div``;
 const Image = styled.img`

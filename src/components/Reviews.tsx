@@ -49,7 +49,11 @@ const Container = styled.div`
   align-items: center;
   background-color: #d0e1ff ;
   padding: 30px;
- 
+  @media only screen and (max-width: 600px) {
+
+height: 100%;
+
+  }
 `;
 
 const Title = styled.h2`
@@ -90,6 +94,10 @@ const Image = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
+  @media only screen and (max-width: 600px) {
+display: none;
+  }
+
 `;
 
 const Content = styled.div`
@@ -101,12 +109,18 @@ const Name = styled.p`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
+  @media only screen and (max-width: 600px) {
+margin-left: 10px;
+  }
 `;
 
 const Job = styled.p`
   font-size: 14px;
   color: #999;
   margin-bottom: 10px;
+  @media only screen and (max-width: 600px) {
+margin-left: 10px;
+  }
 `;
 
 const Text = styled.p`
