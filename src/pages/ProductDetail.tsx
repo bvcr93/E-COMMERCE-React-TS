@@ -53,7 +53,9 @@ export const Product = () => {
               <Amount>1</Amount>
               <ButtonClick>+</ButtonClick>
             </AmountContainer>
-            <Button onClick={() => increaseCartQty(Number(itemId))}>ADD TO CART</Button>
+            <Button onClick={() => increaseCartQty(Number(itemId), items?.name ?? '')}>ADD TO CART</Button>
+
+
             <CartTitle>Items in cart:  {cartQty}</CartTitle>
           </AddContainer>
         </InfoContainer>
